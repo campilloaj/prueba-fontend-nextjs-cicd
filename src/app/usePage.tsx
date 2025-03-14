@@ -1,8 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import { Poppins, Roboto_Mono, Merriweather } from "next/font/google";
-
-import { getProductsService, saveProductService, updateProductService, Product } from './services/product.service';
 
 const robotoMono = Roboto_Mono({
    subsets: ['latin'],
@@ -29,17 +27,9 @@ export type SearchedWord = {
 
 export const usePage = () => {
 
-
    const [font, setFont] = useState(merriweather.className);
    const [theme, setTheme] = useState('dark')
   
-
-   const onSubmit = async () => {
-
-    
-
-   }
-
    const selectFont = (option: string) => {
 
       if (option === "sans_serif") {
@@ -60,7 +50,6 @@ export const usePage = () => {
       font,
       selectFont,
       toggleTheme,
-      theme,
-      onSubmit,
+      theme
    }
 }

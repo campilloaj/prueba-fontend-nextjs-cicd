@@ -11,13 +11,12 @@ import { PencilIcon } from './components/Icons/pencilIcon';
 
 import { getProductsService, saveProductService, updateProductService, deleteProductService } from './services/product.service';
 
-
 //hook
 import { usePage } from './usePage';
 
 export default function Home() {
 
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
 
   const [product, setProduct] = useState({
     id: 0,
@@ -26,7 +25,7 @@ export default function Home() {
     quantity: 0,
   });
 
-  const { data: listProduct, error } = useQuery({ queryKey: ["products"], queryFn: getProductsService })
+  const { data: listProduct, isLoading } = useQuery({ queryKey: ["products"], queryFn: getProductsService })
 
   const { font, selectFont, theme, toggleTheme } = usePage();
 
@@ -36,7 +35,7 @@ export default function Home() {
       name: "",
       price: 0,
       quantity: 0, 
-    })
+    });
   }
 
 
@@ -106,7 +105,7 @@ export default function Home() {
 
   }
 
-  if (!listProduct) return <><h1>Loading</h1></>;
+  if (isLoading) return <><h1>Loading</h1></>;
 
 
   return (
